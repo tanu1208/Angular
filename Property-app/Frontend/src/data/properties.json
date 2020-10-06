@@ -1,38 +1,49 @@
 [
   {
     "Id":1,
+    "SellRent": 1,
     "Name":"KA20",
     "Type":"House",
-    "Price":12000
+    "Price":3250000,
+    "Image":"prop-1"
   },
   {
     "Id":2,
+    "SellRent": 2,
     "Name":"KA21",
     "Type":"House",
-    "Price":12500
+    "Price":4200000,
+    "Image":"prop-2"
   },
   {
     "Id":3,
+    "SellRent": 1,
     "Name":"KA22",
     "Type":"House",
-    "Price":12200
+    "Price":3500000,
+    "Image":"prop-3"
   },
   {
     "Id":4,
+    "SellRent": 1,
     "Name":"KA23",
     "Type":"House",
-    "Price":12700
+    "Price":1070000,
+    "Image":"prop-4"
   },
   {
     "Id":5,
+    "SellRent": 2,
     "Name":"KA24",
     "Type":"House",
-    "Price":12700
+    "Price":1270000,
+    "Image":"prop-5"
   },
   {
     "Id":6,
+    "SellRent": 1,
     "Name":"KA25",
     "Type":"House",
-    "Price":12700
+    "Price":2700000
   }
 ]
