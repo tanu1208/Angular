@@ -7,16 +7,16 @@
     <div class="card-body">
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <div class="form-group col-12">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" formControlName="userName">
+            <label for="name" class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="userName" placeholder="johndoe123">
             <span *ngIf="!userName.valid && (userName.touched || userSubmitted)" class="error-block">
-              Please provide name
+              Please provide a username
             </span>
         </div>
 
         <div class="form-group col-12">
           <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" formControlName="email">
+          <input type="email" class="form-control" formControlName="email" placeholder="test@gmail.com">
           <span *ngIf="!email.valid && (email.touched || userSubmitted)" class="error-block">
             <span *ngIf="email.hasError('required')">
             Please provide an E-mail ID
@@ -29,7 +29,7 @@
 
         <div class="form-group col-12">
           <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" formControlName="password">
+          <input type="password" class="form-control" formControlName="password" placeholder="********">
           <span *ngIf="!password.valid && (password.touched || userSubmitted)" class="error-block">
             <span *ngIf="password.errors['required']">
               Please provide a password
@@ -42,7 +42,7 @@
 
         <div class="form-group col-12">
           <label for="cpassword" class="form-label">Confirm Password</label>
-          <input type="password" class="form-control" formControlName="confirmPassword">
+          <input type="password" class="form-control" formControlName="confirmPassword" placeholder="********">
           <span *ngIf="!confirmPassword.valid && (confirmPassword.touched || userSubmitted)" class="error-block">
             <span *ngIf="confirmPassword.hasError('required')">
               Please confirm the password
@@ -55,7 +55,7 @@
 
         <div class="form-group col-12">
           <label for="mobile" class="form-label">Mobile</label>
-          <input type="tel" class="form-control" formControlName="mobile">
+          <input type="tel" class="form-control" formControlName="mobile" placeholder="47896534">
           <span *ngIf="!mobile.valid && (mobile.touched || userSubmitted)" class="error-block">
             <span *ngIf="mobile.errors['required']">
               Please provide a phone number
