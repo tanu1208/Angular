@@ -10,6 +10,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {path: '', component: PropertyListComponent},
@@ -17,6 +20,8 @@ const appRoutes: Routes = [
   {path: 'buy-property', component: PropertyListComponent},
   {path: 'property-detail/:id', component: PropertyDetailComponent},
   {path: 'rent-property', component: PropertyListComponent},
+  {path: 'user/login', component: UserLoginComponent},
+  {path: 'user/register', component: UserRegisterComponent},
   {path: '**', component: PropertyListComponent}
 ]
 
@@ -27,11 +32,15 @@ const appRoutes: Routes = [
     PropertyListComponent,
     NavBarComponent,
     AddPropertyComponent,
-    PropertyDetailComponent
+    PropertyDetailComponent,
+    UserLoginComponent,
+    UserRegisterComponent
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [HousingService],
