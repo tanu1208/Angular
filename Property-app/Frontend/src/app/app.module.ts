@@ -13,11 +13,12 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   {path: '', component: PropertyListComponent},
   {path: 'add-property', component: AddPropertyComponent},
-  {path: 'buy-property', component: PropertyListComponent},
+  //{path: 'buy-property', component: PropertyListComponent},
   {path: 'property-detail/:id', component: PropertyDetailComponent},
   {path: 'rent-property', component: PropertyListComponent},
   {path: 'user/login', component: UserLoginComponent},
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [HousingService],
+  providers: [HousingService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
