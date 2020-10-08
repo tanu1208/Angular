@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IPropertyBase } from 'src/app/model/ipropertybase';
+import { AddPropertyComponent } from '../add-property/add-property.component';
 
 @Component({
   selector: 'app-property-card',
@@ -12,4 +13,10 @@ import { IPropertyBase } from 'src/app/model/ipropertybase';
 export class PropertyCardComponent {
   @Input() property : IPropertyBase;
   @Input() hideIcons: boolean;
+
+  constructor(private adprop:AddPropertyComponent) { }
+
+  get SellRentInfo() {
+    return this.adprop.SellRent.value;
+  }
 }
