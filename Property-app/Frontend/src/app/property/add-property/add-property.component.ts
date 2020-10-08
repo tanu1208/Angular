@@ -229,7 +229,7 @@ export class AddPropertyComponent implements OnInit {
     this.property.Deposit = this.Deposit.value;
     this.property.Maintenance = this.Maintenance.value;
     this.property.GrossArea = this.GrossArea.value;
-    this.property.Netarea = this.NetArea.value;
+    this.property.NetArea = this.NetArea.value;
     this.property.ZipCode = this.ZipCode.value;
     this.property.TotalFloor = this.TotalFloor.value;
     this.property.Address = this.Address.value;

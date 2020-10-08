@@ -9,7 +9,7 @@ export class Property implements IPropertyBase {
   FType: string;
   Price: number;
   GrossArea: number;
-  Netarea?: number;
+  NetArea?: number;
   Address: string;
   ZipCode: number;
   City: string;
