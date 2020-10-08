@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { TabsetComponent } from 'ngx-bootstrap/tabs/public_api';
 import { IPropertyBase } from 'src/app/model/ipropertybase';
+import { Property } from 'src/app/model/property';
+import { HousingService } from 'src/app/services/housing.service';
+import { AlertifyService } from 'src/app/services/alertify.service';
 
 @Component({
   selector: 'app-add-property',
@@ -14,6 +17,7 @@ export class AddPropertyComponent implements OnInit {
   @ViewChild('formTabs') formTabs: TabsetComponent;
   addPropertyForm: FormGroup;
   nextClicked: boolean;
+  property = new Property();
   
   propertyTypes: Array<string> = ['House', 'Apartment', "Duplex"]
   furnishTypes: Array<string> = ['Fully', 'Semi', "Unfurnished"]
@@ -31,7 +35,7 @@ export class AddPropertyComponent implements OnInit {
     RTM: null
   };
   
-  constructor(private fb:FormBuilder, private router: Router) { }
+  constructor(private fb:FormBuilder, private router: Router, private housingService: HousingService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.CreateAddPropertyForm();
@@ -196,12 +200,49 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit() {
     this.nextClicked = true;
-    console.log('Congrats, form Submitted');
-    console.log('SellRent=' +  this.addPropertyForm.value.BasicInfo.SellRent);
-    console.log(this.addPropertyForm);
+    if (this.allTabsValid()) {
+      this.mapProperty();
+      this.housingService.addProperty(this.property);
+      this.alertify.sucess('Congrats, your property is listed on our website!');
+      console.log(this.addPropertyForm);
+
+      if(this.SellRent.value === '2') {
+        this.router.navigate(['/rent-property']);
+      } else {
+        this.router.navigate(['/']);
+      }
+
+    } else {
+      this.alertify.error('Please review the form and provide the neccesary info');
+    }
   }
 
- /*  allTabsValid(): boolean {
+  mapProperty(): void {
+    this.property.Id = this.housingService.newPropID();
+    this.property.SellRent = +this.SellRent.value;
+    this.property.BHK = this.BHK.value;
+    this.property.PType = this.PType.value;
+    this.property.Name = this.Name.value;
+    this.property.City = this.City.value;
+    this.property.FType = this.FType.value;
+    this.property.Price = this.Price.value;
+    this.property.Deposit = this.Deposit.value;
+    this.property.Maintenance = this.Maintenance.value;
+    this.property.GrossArea = this.GrossArea.value;
+    this.property.Netarea = this.NetArea.value;
+    this.property.ZipCode = this.ZipCode.value;
+    this.property.TotalFloor = this.TotalFloor.value;
+    this.property.Address = this.Address.value;
+    this.property.RTM = this.RTM.value;
+    this.property.AOP = this.AOP.value;
+    this.property.Gated = this.Gated.value;
+    this.property.MainEntrance = this.MainEntrance.value;
+    this.property.Possession = this.PossessionOn.value;
+    this.property.Description = this.Description.value;
+    this.property.PostedOn = new Date().toString();
+  }
+
+  allTabsValid(): boolean {
     if (this.BasicInfo.invalid) {
       this.formTabs.tabs[0].active = true;
       return false;
@@ -222,7 +263,7 @@ export class AddPropertyComponent implements OnInit {
       return false;
     }
     return true;
-  } */
+  }
 
   selectTab(NextTabId: number, IsCurrentTabValid: boolean) {
     this.nextClicked = true;
