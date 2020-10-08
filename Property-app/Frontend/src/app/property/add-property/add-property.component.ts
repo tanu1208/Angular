@@ -12,6 +12,8 @@ import { IPropertyBase } from 'src/app/model/ipropertybase';
 export class AddPropertyComponent implements OnInit {
   @ViewChild('Form') addPropertyForm: NgForm;
   @ViewChild('formTabs') formTabs: TabsetComponent;
+
+  
   
   propertyTypes: Array<string> = ['House', 'Apartment', "Duplex"]
   furnishTypes: Array<string> = ['Fully', 'Semi', "Unfurnished"]
