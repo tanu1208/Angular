@@ -35,79 +35,81 @@
     </div>
   </div>
   <div class="col-sm-8">
-    <tabset class="member-tabset">
-      <tab heading="Overview">
-        <h1>Overview</h1>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="heading">
-                    <strong>Project Name</strong>
-                    <p>{{property.Name}}</p>
-                </div>
+    <div class="tab-panel p-3">
+      <tabset class="member-tabset">
+        <tab heading="Overview">
+          <h1>Overview</h1>
+          <div class="row">
+              <div class="col-sm-6">
+                  <div class="heading">
+                      <strong>Project Name</strong>
+                      <p>{{property.Name}}</p>
+                  </div>
 
-                <div class="heading">
-                    <strong>Total Number of Floors</strong>
-                    <p>{{property.TotalFloor}}</p>
-                </div>
+                  <div class="heading">
+                      <strong>Total Number of Floors</strong>
+                      <p>{{property.TotalFloor}}</p>
+                  </div>
 
-                <div class="heading">
-                    <strong>Age of Property</strong>
-                    <p>{{property.AOP}}</p>
-                </div>
+                  <div class="heading">
+                      <strong>Age of Property</strong>
+                      <p>{{property.AOP}}</p>
+                  </div>
 
-                <div class="heading">
-                    <strong>Posession</strong>
-                    <p>{{property.Possession}}</p>
-                </div>
+                  <div class="heading">
+                      <strong>Posession</strong>
+                      <p>{{property.Possession}}</p>
+                  </div>
+              </div>
+
+              <div class="col-sm-6">
+                  <div class="heading">
+                      <strong>Main Entrance</strong>
+                      <p>{{property.MainEntrance}}</p>
+                  </div>
+
+                  <div class="heading">
+                      <strong>Gated Community</strong>
+                      <p>{{property.Gated}}</p>
+                  </div>
+
+                  <div class="heading">
+                      <strong>Security Deposit</strong>
+                      <p>{{property.Deposit}}</p>
+                  </div>
+                  <div class="heading">
+                      <strong>Maintenance</strong>
+                      <p>{{property.Maintenance}}</p>
+                  </div>
+              </div>
+              <div class="col-sm-12">
+                  <div class="heading">
+                      <strong>About Property</strong>
+                      <p>{{property.Description}}</p>
+                  </div>
+              </div>
             </div>
-
-            <div class="col-sm-6">
-                <div class="heading">
-                    <strong>Main Entrance</strong>
-                    <p>{{property.MainEntrance}}</p>
-                </div>
-
-                <div class="heading">
-                    <strong>Gated Community</strong>
-                    <p>{{property.Gated}}</p>
-                </div>
-
-                <div class="heading">
-                    <strong>Security Deposit</strong>
-                    <p>{{property.Deposit}}</p>
-                </div>
-                <div class="heading">
-                    <strong>Maintenance</strong>
-                    <p>{{property.Maintenance}}</p>
-                </div>
+        </tab>
+        <tab heading="Address">
+          <div class="col-sm-12">
+            <h1>Address</h1>
+            <div class="heading">
+              Street Name: <strong>{{property.Address}}</strong><br/>
+              Zipcode: <strong>{{property.ZipCode}}</strong><br/>
+              City: <strong>{{property.City}}</strong>
             </div>
-            <div class="col-sm-12">
-                <div class="heading">
-                    <strong>About Property</strong>
-                    <p>{{property.Description}}</p>
-                </div>
-            </div>
-          </div>
-      </tab>
-      <tab heading="Address">
-        <div class="col-sm-12">
-          <h1>Address</h1>
-          <div class="heading">
-            Street Name: <strong>{{property.Address}}</strong><br/>
-            Zipcode: <strong>{{property.ZipCode}}</strong><br/>
-            City: <strong>{{property.City}}</strong>
-          </div>
-      </div>
+        </div>
 
-      </tab>
-      <tab heading="Photos">
-        <h1>Photos</h1>
-      </tab>
-      <tab heading="Contact">
-        <h1>Contact Detail</h1>
-        This should be restricted area and only registered user should be able to see seller contact details
-      </tab>
-    </tabset>
+        </tab>
+        <tab heading="Photos">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+        </tab>
+        <tab heading="Contact">
+          <h1>Contact Detail</h1>
+          This should be restricted area and only registered user should be able to see seller contact details
+        </tab>
+      </tabset>
+    </div>
   </div>
 </div>
 

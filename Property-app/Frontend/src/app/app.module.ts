@@ -7,6 +7,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
@@ -15,18 +16,19 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { UserRegisterComponent } from './user-register/user-register.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
 
 const appRoutes: Routes = [
   {path: '', component: PropertyListComponent},
   {path: 'add-property', component: AddPropertyComponent},
   //{path: 'buy-property', component: PropertyListComponent},
-  {path: 'property-detail/:id', component: PropertyDetailComponent},
+  {path: 'property-detail/:id', component: PropertyDetailComponent, resolve: {prp: PropertyDetailResolverService}},
   {path: 'rent-property', component: PropertyListComponent},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'user/register', component: UserRegisterComponent},
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxGalleryModule,
     FormsModule,
     ReactiveFormsModule,
     ButtonsModule.forRoot(),
@@ -56,7 +59,7 @@ const appRoutes: Routes = [
     BsDatepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [HousingService, UserService, AlertifyService, AuthService],
+  providers: [HousingService, UserService, AlertifyService, AuthService, PropertyDetailResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
